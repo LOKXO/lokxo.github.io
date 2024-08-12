@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sigma Website</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: black;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      .container {
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .text {
+        font-size: 64px;
+        font-weight: bold;
+        color: #ffa500;
+        text-shadow: 0 0 20px #ffa500, 0 0 30px #ff4500, 0 0 40px #ff4500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .cursor {
+        width: 4px;
+        height: 64px;
+        background-color: white;
+        margin-left: 4px;
+        animation: blink 0.75s step-end infinite;
+      }
+
+      .blue-text {
+        color: #00f2ff;
+        text-shadow: 0 0 20px #00f2ff, 0 0 30px #00d4ff, 0 0 40px #00d4ff;
+      }
+
+      @keyframes blink {
+        from,
+        to {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="displayText" class="text"></div>
+      <div class="cursor" id="cursor"></div>
+    </div>
+
+    <script>
+      const textElement = document.getElementById("displayText");
+      const cursorElement = document.getElementById("cursor");
+      const text1 = "eeerrrm";
+      const text2 = "what the sigma";
+
+      function typeText(text, callback) {
+        let i = 0;
+        const interval = setInterval(() => {
+          if (i < text.length) {
+            textElement.textContent += text.charAt(i);
+            i++;
+          } else {
+            clearInterval(interval);
+            setTimeout(callback, 1000);
+          }
+        }, 200);
+      }
+
+      function deleteText(callback) {
+        let i = textElement.textContent.length;
+        const interval = setInterval(() => {
+          if (i > 0) {
+            textElement.textContent = textElement.textContent.substring(
+              0,
+              i - 1
+            );
+            i--;
+          } else {
+            clearInterval(interval);
+            setTimeout(callback, 500);
+          }
+        }, 100);
+      }
+
+      function startTypingSequence() {
+        typeText(text1, () => {
+          deleteText(() => {
+            textElement.classList.add("blue-text");
+            cursorElement.classList.add("blue-text");
+            typeText(text2, () => {});
+          });
+        });
+      }
+
+      window.onload = startTypingSequence;
+    </script>
+  </body>
+</html>
