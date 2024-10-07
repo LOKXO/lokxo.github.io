@@ -1,38 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Live preview</title>
-    <p><a href="https://lokxo.github.io/index2">click</a></p>
-    <style>
-      .h_iframe-aparat_embed_frame {
-        position: relative;
-      }
-      .h_iframe-aparat_embed_frame .ratio {
-        display: block;
-        width: 100%;
-        height: auto;
-      }
-      .h_iframe-aparat_embed_frame iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 101%;
-        height: 101%;
-      }
-    </style>
-    <div class="h_iframe-aparat_embed_frame">
-      <span style="display: block; padding-top: 57%"></span
-      ><iframe
-        scrolling="no"
-        allowfullscreen="true"
-        webkitallowfullscreen="true"
-        mozallowfullscreen="true"
-        src="https://www.aparat.com/embed/live/dripofmyshirt"
-      ></iframe>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyHub - App & Code Uploads</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnH2N2ELZByERbP3eO0+yZKYMj0jZY6jfVv5paf5QwFXHHYcSdoSXcMZ1WAWlg7hRKhb3qPkA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-logo">MyHub</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#apps">Apps</a></li>
+            <li><a href="#code">Code</a></li>
+            <li><a href="#upload">Upload</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" id="theme-toggle"><i class="fas fa-moon"></i></a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="gradient-text">Welcome to MyHub</h1>
+        <p>Upload and explore amazing apps and code repositories.</p>
+        <button class="btn" id="get-started">Get Started</button>
+    </section>
+
+    <!-- Apps Section -->
+    <section id="apps" class="section">
+        <h2 class="gradient-text">Apps</h2>
+        <div class="content-container" id="apps-container">
+            <!-- Dynamically Loaded Apps -->
+            <!-- Example App Card -->
+            <!-- 
+            <div class="card" onclick="openModal('app1')">
+                <img src="app1.png" alt="App 1">
+                <h3>App Title</h3>
+                <p>Short description of the app.</p>
+            </div>
+            -->
+        </div>
+    </section>
+
+    <!-- Code Section -->
+    <section id="code" class="section">
+        <h2 class="gradient-text">Code Repositories</h2>
+        <div class="content-container" id="code-container">
+            <!-- Dynamically Loaded Code Repositories -->
+            <!-- Example Code Card -->
+            <!-- 
+            <div class="card" onclick="openModal('code1')">
+                <img src="repo1.png" alt="Repo 1">
+                <h3>Repository Title</h3>
+                <p>Short description of the repository.</p>
+            </div>
+            -->
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section id="upload" class="section">
+        <h2 class="gradient-text">Upload Your App or Code</h2>
+        <div class="upload-container">
+            <form id="upload-form">
+                <label for="type">Select Type:</label>
+                <select id="type" name="type" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="app">App</option>
+                    <option value="code">Code</option>
+                </select>
+
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" placeholder="Enter title" required>
+
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" placeholder="Enter description" required></textarea>
+
+                <label for="file">Upload File:</label>
+                <input type="file" id="file" name="file" required>
+
+                <button type="submit" class="btn">Upload</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2 class="gradient-text">Contact</h2>
+        <div class="contact-container">
+            <form id="contact-form">
+                <label for="contact-name">Name:</label>
+                <input type="text" id="contact-name" name="contact-name" placeholder="Your Name" required>
+
+                <label for="contact-email">Email:</label>
+                <input type="email" id="contact-email" name="contact-email" placeholder="Your Email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 MyHub. All rights reserved.</p>
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeModal">&times;</span>
+            <h2 id="modal-title">Title</h2>
+            <img id="modal-image" src="" alt="Modal Image">
+            <p id="modal-description">Description</p>
+            <a href="#" id="modal-link" target="_blank">View More</a>
+        </div>
     </div>
-  </head>
-  <body></body>
+
+    <!-- Loading Spinner -->
+    <div id="loading" class="loading-spinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="scripts.js"></script>
+</body>
 </html>
