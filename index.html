@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyHub - App & Code Uploads</title>
+    <title>MyHub - Explore Fun Links</title>
     <link rel="stylesheet" href="styles.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -15,11 +15,9 @@
     <nav class="navbar">
         <div class="nav-logo">MyHub</div>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#apps">Apps</a></li>
-            <li><a href="#code">Code</a></li>
-            <li><a href="#upload">Upload</a></li>
+            <li><a href="#fun-links">Fun Links</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="#" id="theme-toggle"><i class="fas fa-moon"></i></a></li>
+            <li><a href="#" id="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-moon"></i></a></li>
         </ul>
         <div class="hamburger" id="hamburger">
             <span class="bar"></span>
@@ -30,66 +28,55 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1 class="gradient-text">Welcome to MyHub</h1>
-        <p>Upload and explore amazing apps and code repositories.</p>
-        <button class="btn" id="get-started">Get Started</button>
-    </section>
-
-    <!-- Apps Section -->
-    <section id="apps" class="section">
-        <h2 class="gradient-text">Apps</h2>
-        <div class="content-container" id="apps-container">
-            <!-- Dynamically Loaded Apps -->
-            <!-- Example App Card -->
-            <!-- 
-            <div class="card" onclick="openModal('app1')">
-                <img src="app1.png" alt="App 1">
-                <h3>App Title</h3>
-                <p>Short description of the app.</p>
+        <div class="hero-content">
+            <div class="text-container">
+                <h1 class="gradient-text">Welcome to MyHub</h1>
+                <p class="normal-text">Explore a collection of fun and interesting websites curated just for you.</p>
+                <button class="btn" id="get-started">Get Started</button>
             </div>
-            -->
+            <div class="linux-status">
+                <p><i class="fas fa-check-circle"></i> Loaded</p>
+                <p><i class="fas fa-spinner fa-spin"></i> Starting Services</p>
+                <p><i class="fas fa-check-circle"></i> Services Running</p>
+            </div>
         </div>
     </section>
 
-    <!-- Code Section -->
-    <section id="code" class="section">
-        <h2 class="gradient-text">Code Repositories</h2>
-        <div class="content-container" id="code-container">
-            <!-- Dynamically Loaded Code Repositories -->
-            <!-- Example Code Card -->
-            <!-- 
-            <div class="card" onclick="openModal('code1')">
-                <img src="repo1.png" alt="Repo 1">
-                <h3>Repository Title</h3>
-                <p>Short description of the repository.</p>
+    <!-- Fun Links Section -->
+    <section id="fun-links" class="section">
+        <h2 class="gradient-text">Fun Links</h2>
+        <div class="content-container">
+            <div class="card">
+                <i class="fas fa-gamepad fa-3x"></i>
+                <h3><a href="https://www.coolmathgames.com/" target="_blank" rel="noopener noreferrer">Cool Math Games</a></h3>
+                <p>Play fun and challenging math-based games.</p>
             </div>
-            -->
-        </div>
-    </section>
-
-    <!-- Upload Section -->
-    <section id="upload" class="section">
-        <h2 class="gradient-text">Upload Your App or Code</h2>
-        <div class="upload-container">
-            <form id="upload-form">
-                <label for="type">Select Type:</label>
-                <select id="type" name="type" required>
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="app">App</option>
-                    <option value="code">Code</option>
-                </select>
-
-                <label for="title">Title:</label>
-                <input type="text" id="title" name="title" placeholder="Enter title" required>
-
-                <label for="description">Description:</label>
-                <textarea id="description" name="description" placeholder="Enter description" required></textarea>
-
-                <label for="file">Upload File:</label>
-                <input type="file" id="file" name="file" required>
-
-                <button type="submit" class="btn">Upload</button>
-            </form>
+            <div class="card">
+                <i class="fas fa-music fa-3x"></i>
+                <h3><a href="https://www.azlyrics.com/" target="_blank" rel="noopener noreferrer">AZLyrics</a></h3>
+                <p>Find lyrics to your favorite songs.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-film fa-3x"></i>
+                <h3><a href="https://www.imdb.com/" target="_blank" rel="noopener noreferrer">IMDb</a></h3>
+                <p>Explore movies, TV shows, and celebrities.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-globe fa-3x"></i>
+                <h3><a href="https://www.boredpanda.com/" target="_blank" rel="noopener noreferrer">Bored Panda</a></h3>
+                <p>Discover amazing and creative stories.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-laugh fa-3x"></i>
+                <h3><a href="https://www.theonion.com/" target="_blank" rel="noopener noreferrer">The Onion</a></h3>
+                <p>Read satirical news and articles.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-book fa-3x"></i>
+                <h3><a href="https://www.goodreads.com/" target="_blank" rel="noopener noreferrer">Goodreads</a></h3>
+                <p>Find and share book recommendations.</p>
+            </div>
+            <!-- Add more fun links as desired -->
         </div>
     </section>
 
@@ -117,8 +104,8 @@
         <p>&copy; 2023 MyHub. All rights reserved.</p>
     </footer>
 
-    <!-- Modal Structure -->
-    <div id="modal" class="modal">
+    <!-- Modal Structure (If needed in future) -->
+    <!-- <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close-button" id="closeModal">&times;</span>
             <h2 id="modal-title">Title</h2>
@@ -126,9 +113,9 @@
             <p id="modal-description">Description</p>
             <a href="#" id="modal-link" target="_blank">View More</a>
         </div>
-    </div>
+    </div> -->
 
-    <!-- Loading Spinner -->
+    <!-- Loading Spinner (If needed in future) -->
     <div id="loading" class="loading-spinner">
         <div class="spinner"></div>
     </div>
