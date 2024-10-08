@@ -7,13 +7,13 @@
 
 /* Variables for Themes */
 :root {
-    --bg-color: #121212; /* Darker background */
+    --bg-color: #0d0d0d; /* Even darker background */
     --text-color: #ffffff;
-    --card-bg: #1e1e1e;
+    --card-bg: #1a1a1a;
     --btn-bg: linear-gradient(270deg, #a855f7, #ec4899, #06b6d4);
-    --nav-bg: rgba(18, 18, 18, 0.7);
+    --nav-bg: rgba(13, 13, 13, 0.7);
     --gradient-text: linear-gradient(90deg, #a855f7, #ec4899, #06b6d4);
-    --gradient-animation: gradientAnimation 10s ease infinite;
+    --gradient-animation: gradientAnimation 15s ease infinite;
 }
 
 body.light-theme {
@@ -60,6 +60,7 @@ body {
     cursor: pointer;
     animation: var(--gradient-animation);
     background-size: 400% 400%;
+    text-shadow: 0 0 10px rgba(168,85,247,0.5);
 }
 
 .nav-links {
@@ -101,6 +102,16 @@ body {
 .nav-links a:hover {
     color: #a855f7;
     text-shadow: 2px 2px 8px rgba(168,85,247,0.7);
+}
+
+/* Icon in Nav Links (GitHub) */
+.nav-links a i {
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a i:hover {
+    color: #ec4899;
 }
 
 /* Hamburger Menu */
@@ -148,13 +159,13 @@ body {
     margin-bottom: 20px;
     animation: var(--gradient-animation);
     background-size: 400% 400%;
-    text-shadow: 0 0 10px rgba(168,85,247,0.7);
+    text-shadow: 0 0 15px rgba(168,85,247,0.7);
 }
 
 .normal-text {
     font-size: 1.2rem;
     margin-bottom: 30px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
 }
 
 .btn {
@@ -194,6 +205,27 @@ body {
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
+/* Ripple Effect */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn .ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 600ms linear;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
 /* Linux Status Box */
 .linux-status {
     background-color: rgba(30, 30, 30, 0.8);
@@ -201,7 +233,7 @@ body {
     border-radius: 10px;
     margin-left: 40px;
     color: #a855f7;
-    box-shadow: 0 0 10px rgba(168,85,247,0.5);
+    box-shadow: 0 0 15px rgba(168,85,247,0.5);
 }
 
 .linux-status p {
@@ -234,12 +266,12 @@ body {
     background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradientGlow 3s ease-in-out infinite;
+    animation: gradientGlow 4s ease-in-out infinite;
     text-shadow: 0 0 10px rgba(168,85,247,0.7);
 }
 
 .gradient-text:hover {
-    animation: gradientGlowHover 3s ease-in-out infinite;
+    animation: gradientGlowHover 4s ease-in-out infinite;
 }
 
 /* Animation for Gradient Text */
@@ -257,25 +289,25 @@ body {
 
 @keyframes gradientGlow {
     0% {
-        text-shadow: 0 0 10px rgba(168,85,247,0.7);
+        text-shadow: 0 0 15px rgba(168,85,247,0.7);
     }
     50% {
-        text-shadow: 0 0 20px rgba(255,0,150,0.7);
+        text-shadow: 0 0 30px rgba(255,0,150,0.7);
     }
     100% {
-        text-shadow: 0 0 10px rgba(168,85,247,0.7);
+        text-shadow: 0 0 15px rgba(168,85,247,0.7);
     }
 }
 
 @keyframes gradientGlowHover {
     0% {
-        text-shadow: 0 0 15px rgba(168,85,247,0.8);
+        text-shadow: 0 0 20px rgba(168,85,247,0.8);
     }
     50% {
-        text-shadow: 0 0 25px rgba(255,0,150,0.8);
+        text-shadow: 0 0 35px rgba(255,0,150,0.8);
     }
     100% {
-        text-shadow: 0 0 15px rgba(168,85,247,0.8);
+        text-shadow: 0 0 20px rgba(168,85,247,0.8);
     }
 }
 
@@ -394,6 +426,17 @@ footer {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
+footer a {
+    color: #a855f7;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ec4899;
+    text-shadow: 1px 1px 3px rgba(236,72,153,0.7);
+}
+
 /* Modal */
 .modal {
     display: none; 
@@ -485,6 +528,7 @@ footer {
     .linux-status {
         margin-left: 0;
         margin-top: 20px;
+        width: 100%;
     }
 }
 
@@ -538,4 +582,19 @@ footer {
         width: 100%;
         margin-top: 20px;
     }
+}
+
+/* Enhanced Gradient Glow for Text */
+.gradient-glow {
+    text-shadow: 0 0 15px rgba(168,85,247,0.7), 0 0 30px rgba(255,0,150,0.5);
+}
+
+/* Fix for GitHub Icon Alignment */
+.nav-links a i {
+    vertical-align: middle;
+}
+
+/* Ensuring Proper Spacing in Linux Status Box */
+.linux-status p {
+    margin-bottom: 10px;
 }
