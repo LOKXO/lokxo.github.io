@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Smooth Scrolling
     document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            if(this.getAttribute('href') !== '#' && this.getAttribute('href') !== 'https://github.com/yourusername') {
+            if(this.getAttribute('href') !== '#') {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
