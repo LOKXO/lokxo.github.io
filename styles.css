@@ -11,29 +11,64 @@
     --text-color: #f0f0f0;
     --card-bg: #1a1a1a;
     --btn-bg: linear-gradient(270deg, #a855f7, #06b6d4, #a855f7); /* Purple and Neon Blue */
-    --nav-bg: rgba(10, 10, 10, 0.8);
-    --gradient-text: linear-gradient(90deg, #a855f7, #06b6d4, #a855f7); /* Purple and Neon Blue */
-    --gradient-animation: gradientAnimation 20s ease infinite; /* Slower animation */
+    --nav-bg: rgba(10, 10, 10, 0.7); /* Increased transparency */
+    --gradient-text: linear-gradient(90deg, #a855f7, #06b6d4, #a855f7); /* Enhanced Gradient */
     --shadow-color: rgba(0, 0, 0, 0.7);
+    --animation-duration: 5s;
 }
 
+/* Light Theme Overrides */
 body.light-theme {
     --bg-color: #0d0d0d;
     --text-color: #e0e0e0;
     --card-bg: #2a2a2a;
     --btn-bg: linear-gradient(270deg, #06b6d4, #a855f7, #06b6d4); /* Neon Blue and Purple */
-    --nav-bg: rgba(13, 13, 13, 0.8);
+    --nav-bg: rgba(13, 13, 13, 0.7);
     --gradient-text: linear-gradient(90deg, #06b6d4, #a855f7, #06b6d4);
-    --gradient-animation: gradientAnimation 25s ease infinite;
     --shadow-color: rgba(0, 0, 0, 0.8);
 }
 
+/* Body Styling */
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     transition: background-color 0.3s, color 0.3s;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    display: flex; /* Initially visible for loading */
+    position: fixed; 
+    z-index: 4000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.8); 
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+
+.loading-spinner.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.spinner {
+    border: 8px solid #f3f3f3; 
+    border-top: 8px solid #a855f7; /* Matching the gradient color */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* Navigation Bar */
@@ -43,7 +78,7 @@ body {
     top: 0;
     left: 0;
     background: var(--nav-bg);
-    background: linear-gradient(90deg, rgba(128,0,128,0.7), rgba(0,255,255,0.7), rgba(128,0,128,0.7)); /* Enhanced Purple and Neon Blue */
+    background: linear-gradient(90deg, rgba(128,0,128,0.6), rgba(0,255,255,0.6), rgba(128,0,128,0.6)); /* More transparent and animated */
     padding: 15px 40px;
     display: flex;
     justify-content: space-between;
@@ -51,6 +86,19 @@ body {
     z-index: 1000;
     transition: background 0.3s;
     backdrop-filter: blur(10px);
+    animation: navGradientMove 30s ease infinite; /* Animated gradient */
+}
+
+@keyframes navGradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .nav-logo {
@@ -60,9 +108,8 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     cursor: pointer;
-    animation: var(--gradient-animation);
-    background-size: 400% 400%;
-    text-shadow: 0 0 15px rgba(168,85,247,0.7);
+    animation: none; /* Fixed gradient */
+    text-shadow: 0 0 20px rgba(168,85,247,0.8); /* Stronger glow */
 }
 
 .nav-links {
@@ -82,7 +129,7 @@ body {
     position: relative;
     transition: color 0.3s ease;
     cursor: pointer;
-    text-shadow: 2px 2px 6px var(--shadow-color);
+    text-shadow: 2px 2px 8px var(--shadow-color); /* Stronger shadows */
 }
 
 .nav-links a::after {
@@ -147,6 +194,14 @@ body {
     max-width: 1200px;
     width: 100%;
     flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeIn 1s forwards 0.5s; /* Fade-in effect */
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
 }
 
 .text-container {
@@ -159,7 +214,6 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 20px;
-    animation: none; /* Removed animation for fixed gradient */
     background-size: 400% 400%;
     text-shadow: 0 0 20px rgba(168,85,247,0.8); /* Stronger glow */
 }
@@ -167,7 +221,7 @@ body {
 .normal-text {
     font-size: 1.2rem;
     margin-bottom: 30px;
-    text-shadow: 2px 2px 8px var(--shadow-color);
+    text-shadow: 2px 2px 8px var(--shadow-color); /* Stronger shadows */
 }
 
 .btn {
@@ -182,6 +236,7 @@ body {
     position: relative;
     overflow: hidden;
     background-size: 600% 600%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.6);
     text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
 }
 
@@ -271,6 +326,9 @@ body {
 .section {
     padding: 80px 40px;
     min-height: 100vh;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 1s;
 }
 
 .section:nth-of-type(even) {
@@ -285,17 +343,18 @@ body {
     background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: none; /* Fixed gradient without animation */
-    text-shadow: 0 0 20px rgba(168,85,247,0.8);
+    text-shadow: 0 0 20px rgba(168,85,247,0.8); /* Stronger glow */
 }
 
-/* Content Container */
 .content-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 1.5s;
 }
 
 .card {
@@ -308,6 +367,13 @@ body {
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 8px var(--shadow-color);
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 2s;
+}
+
+.section .card:nth-child(n) {
+    animation-delay: calc(2s + (n * 0.2s)); /* Staggered fade-in */
 }
 
 .card:hover {
@@ -344,6 +410,9 @@ body {
 .contact-container {
     max-width: 600px;
     margin: 0 auto;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 3s;
 }
 
 #contact-form {
@@ -375,6 +444,9 @@ body {
 
 #contact-form button {
     align-self: flex-end;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 4s;
 }
 
 /* Footer */
@@ -385,6 +457,9 @@ footer {
     color: #777777;
     transition: background-color 0.3s, color 0.3s;
     text-shadow: 2px 2px 4px var(--shadow-color);
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 4.5s;
 }
 
 footer a {
@@ -451,32 +526,31 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* Loading Spinner */
-.loading-spinner {
-    display: none; 
-    position: fixed; 
-    z-index: 3000; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0,0,0,0.5); 
-    justify-content: center;
-    align-items: center;
+/* Enhanced Gradient Glow for Text */
+.gradient-glow {
+    text-shadow: 0 0 25px rgba(168,85,247,0.8), 0 0 50px rgba(6,182,212,0.6);
 }
 
-.spinner {
-    border: 8px solid #f3f3f3; 
-    border-top: 8px solid var(--gradient-text-start, #a855f7);
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite;
+/* Fix for GitHub Icon Alignment */
+.nav-links a i {
+    vertical-align: middle;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+/* Ensuring Proper Spacing in Linux Status Box */
+.linux-status p {
+    margin-bottom: 10px;
+}
+
+/* Fade-In and Other Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive Design */
@@ -545,17 +619,25 @@ footer a:hover {
     }
 }
 
-/* Enhanced Gradient Glow for Text */
-.gradient-glow {
-    text-shadow: 0 0 20px rgba(168,85,247,0.8), 0 0 40px rgba(6,182,212,0.6);
+/* Additional Styling for Smooth Animations */
+.section, .content-container, .card, .contact-container, footer {
+    opacity: 0;
+    transform: translateY(20px);
 }
 
-/* Fix for GitHub Icon Alignment */
-.nav-links a i {
-    vertical-align: middle;
+.section.loaded, .content-container.loaded, .card.loaded, .contact-container.loaded, footer.loaded {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease;
 }
 
-/* Ensuring Proper Spacing in Linux Status Box */
-.linux-status p {
-    margin-bottom: 10px;
+/* Adjust Hover Effects for Cards */
+.card:hover i {
+    color: #06b6d4;
+    animation: pulse 1.5s infinite;
+}
+
+.card:hover h3 a {
+    color: #06b6d4;
+    text-shadow: 1px 1px 6px rgba(6,182,212,0.9);
 }
